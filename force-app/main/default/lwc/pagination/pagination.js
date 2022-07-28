@@ -4,8 +4,8 @@ export default class Pagination extends LightningElement {
 
     currentPage=1
     totalRecords
-    recordSize=3
-    totalPage
+    recordSize=5
+    totalPage=0
 
     get records(){
         return this.visibleRecords;
@@ -14,20 +14,35 @@ export default class Pagination extends LightningElement {
     set records(data){
         if(data){
             this.totalRecords=data;
-            this.visibleRecords=data.slice(0,this.recordSize)
+           
             this.totalPage=Math.ceil(data.length/this.recordSize)
             // console.log(`Inside pagination setter: ${this.totalRecords}`);
             this.updateRecords();
         }
     }
+    get disablePrevious(){
+        return this.currentPage<=1;
+    }
+    get disableNext(){
+        return this.currentPage>=this.totalPage;
+    }
     previousHandler(){
-        // console.log(`prevHandler:`);
+        if(this.currentPage>1){
+            this.currentPage=this.currentPage-1;
+            this.updateRecords();
+        }
         
     }
     nextHandler(){
-
+        if(this.currentPage<this.totalPage){
+            this.currentPage=this.currentPage+1;
+            this.updateRecords();
+        }
     }
     updateRecords(){
+        const start=(this.currentPage-1)*this.recordSize
+        const end=this.recordSize*this.currentPage
+        this.visibleRecords=this.totalRecords.slice(start,end)
         this.dispatchEvent(new CustomEvent("update",{
             detail:{
                 record:this.visibleRecords
