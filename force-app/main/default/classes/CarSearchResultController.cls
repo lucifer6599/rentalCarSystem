@@ -8,8 +8,8 @@ public with sharing class CarSearchResultController {
     }else{
         return [ Select Id,Name,Picture__c,Contact__r.Name,Geolocation__latitude__s,Geolocation__longitude__s
         From Car__c
-        Where Available_For_Rent__c=true 
-        AND Car_type__c=:carTypeId];
+        Where Available_For_Rent__c=true
+        AND Car_Type__c=:carTypeId];
     }
  }
 }

@@ -19,7 +19,7 @@ public class CreateData {
         List<Contact> contacts = new List<Contact>();
         Contact con1 = new Contact(Salutation='Mr.', FirstName='Devi Pradeep',
                                   LastName='Naredla', AccountId=acc.id, Email='testcontact1@lightning.com');
-        Contact con2 = new Contact(Salutation='Mr.', FirstName='Manish',
+        Contact con2 = new Contact(Salutation='Mr.', FirstName='Jay',
                                   LastName='Choudhari', AccountId=acc.id, Email='testcontact2@lightning.com');
         Contact con3 = new Contact(Salutation='Mr.', FirstName='Karthik',
                                   LastName='Murari', AccountId=acc.id, Email='testcontact3@lightning.com');
